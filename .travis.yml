@@ -18,6 +18,7 @@ before_install:
   - sudo apt-get -y install libx11-dev
   - sudo apt-get -y install build-essential # C++ compiler
   - sudo apt-get -y install wget
+  - sudo apt-get -y install gcc 'gcc-c++'
   - wget http://www.cmake.org/files/v2.8/cmake-2.8.5.tar.gz
   - tar xf cmake-2.8.5.tar.gz
   - cd cmake-2.8.5
