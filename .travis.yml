@@ -6,7 +6,7 @@ compiler:
 before_install:
  # - sudo add-apt-repository --yes ppa:makson96/desurium-travis
   - sudo apt-get -y update
-  - sudo apt-get -y install clang-3.*
+  - sudo apt-get -y install g++-4.8 gcc-4.8 gcc-4.8-multilib 
   - sudo apt-get -y install libxtst-dev
   - sudo apt-get -y install libxext-dev
   - sudo apt-get -y install mercurial bison flex automake libtool g++ rpm
