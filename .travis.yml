@@ -7,6 +7,24 @@ before_install:
  # - sudo add-apt-repository --yes ppa:makson96/desurium-travis
   - sudo apt-get -y update
   # - sudo apt-get -y install clang-3.4 cmake g++-4.8 gcc-4.8 gcc-4.8-multilib libboost1.48-dev libboost-filesystem1.48-dev libboost-system1.48-dev libgtest-dev libnotify-dev libtinyxml2-dev libwxgtk3.0-dev wx-common
+  - sudo apt-get -y install libXt*
+  - sudo  apt-get -y install libxtst-dev
+  - sudo  apt-get -y install libxext-dev
+  - sudo apt-get -y install mercurial bison flex automake libtool g++ rpm
+  - sudo  apt-get -y install libxext-dev libncurses-dev python-dev
+  - sudo apt-get -y install cython alien
+  - sudo apt-get -y install xfonts-100dpi #helvetica
+  - sudo apt-get -y install xfonts-75dpi #for some special idraw I like
+  - sudo apt-get -y install kdelibs5-dev # kdelibs4-dev libkde3-java libkde3-jni
+  - sudo apt-get -y install libx11-dev
+  - sudo apt-get -y install build-essential # C++ compiler
+  - sudo apt-get -y install wget
+  - wget http://www.cmake.org/files/v2.8/cmake-2.8.5.tar.gz
+  - tar xf cmake-2.8.5.tar.gz
+  - cd cmake-2.8.5
+  - ./configure
+  - make install
+  - cd ..
   - sudo apt-get -y install gcc-multilib libnotify-dev libv8-dev libboost1.48-dev libboost-date-time1.48-dev libboost-filesystem1.48-dev libboost-thread1.48-dev libboost-system1.48-dev libboost-test1.48-dev libgtest-dev
   - sudo wget "http://ppa.launchpad.net/fransschreuder1/usbpicprog-stable/ubuntu/pool/main/w/wxwidgets2.9/libwxgtk2.9-dev_2.9.3-1_amd64.deb"
   - sudo wget "http://ppa.launchpad.net/fransschreuder1/usbpicprog-stable/ubuntu/pool/main/w/wxwidgets2.9/wx2.9-headers_2.9.3-1_amd64.deb"
@@ -17,7 +35,8 @@ before_install:
   - sudo dpkg --install libwxgtk2.9-0_2.9.3-1_amd64.deb
   - sudo dpkg --install wx2.9-headers_2.9.3-1_amd64.deb
   - sudo dpkg --install libwxbase2.9-dev_2.9.3-1_amd64.deb
-  - sudo dpkg --install libwxgtk2.9-dev_2.9.3-1_amd64.deb  - if [ $CC == "clang" ]; then export CC=clang-3.4 && export CXX=clang++-3.4; fi
+  - sudo dpkg --install libwxgtk2.9-dev_2.9.3-1_amd64.deb  
+  - if [ $CC == "clang" ]; then export CC=clang-3.4 && export CXX=clang++-3.4; fi
   - if [ $CC == "gcc" ]; then export CC=gcc-4.8 && export CXX=g++-4.8; fi
 script:
   - cmake . -DBUILD_CEF=off -DDEBUG=on -DWITH_GTEST=ON -DBUILD_TESTS=ON -DCTEST_OUTPUT_ON_FAILURE=ON
