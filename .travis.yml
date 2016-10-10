@@ -7,6 +7,7 @@ before_install:
  # - sudo add-apt-repository --yes ppa:makson96/desurium-travis
   - sudo apt-get -y update
   # - sudo apt-get -y install clang-3.4 cmake g++-4.8 gcc-4.8 gcc-4.8-multilib libboost1.48-dev libboost-filesystem1.48-dev libboost-system1.48-dev libgtest-dev libnotify-dev libtinyxml2-dev libwxgtk3.0-dev wx-common
+    - sudo apt-get -y install gcc-multilib libnotify-dev libv8-dev libboost1.48-dev libboost-date-time1.48-dev libboost-filesystem1.48-dev libboost-thread1.48-dev libboost-system1.48-dev libboost-test1.48-dev libgtest-dev
   - if [ $CC == "clang" ]; then export CC=clang-3.4 && export CXX=clang++-3.4; fi
   - if [ $CC == "gcc" ]; then export CC=gcc-4.8 && export CXX=g++-4.8; fi
 script:
