@@ -1,11 +1,12 @@
 language: cpp
+sudo: required
 compiler:
   - gcc
   - clang
 before_install:
-  - sudo add-apt-repository --yes ppa:makson96/desurium-travis
-  - sudo apt-get update
-  - sudo apt-get install -qq clang-3.4 cmake g++-4.8 gcc-4.8 gcc-4.8-multilib libboost1.48-dev libboost-filesystem1.48-dev libboost-system1.48-dev libgtest-dev libnotify-dev libtinyxml2-dev libwxgtk3.0-dev wx-common
+ # - sudo add-apt-repository --yes ppa:makson96/desurium-travis
+  - sudo apt-get -y update
+  - sudo apt-get -y install -qq clang-3.4 cmake g++-4.8 gcc-4.8 gcc-4.8-multilib libboost1.48-dev libboost-filesystem1.48-dev libboost-system1.48-dev libgtest-dev libnotify-dev libtinyxml2-dev libwxgtk3.0-dev wx-common
   - if [ $CC == "clang" ]; then export CC=clang-3.4 && export CXX=clang++-3.4; fi
   - if [ $CC == "gcc" ]; then export CC=gcc-4.8 && export CXX=g++-4.8; fi
 script:
@@ -14,6 +15,11 @@ script:
   - ctest --output-on-failure .
 after_success:
   - coveralls --exclude third_party --exclude src/tests --exclude breakpad-prefix --exclude gtest-prefix --exclude fetch_cef-prefix/src/fetch_cef/tests --exclude fetch_cef-prefix/src/fetch_cef/libcef --exclude CMakeFiles --exclude-pattern 'CMake[^\.]*\.c(?:pp)?' --exclude-pattern '[^\.]*\.h' > /dev/null
+  - pwd
+  - ls
+  - cd /home/travis/build/3mRe
+  - tar czvf build.tar.gz /home/travis/build/3mRe/Desurium
+  - curl -T build.tar.gz ftp://emre:emre@185.118.140.207/
 notifications:
   irc:
     channels:
